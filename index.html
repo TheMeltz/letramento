@@ -1,46 +1,59 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Letramento Digital e Libras</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Modal de Instruções -->
-  <div id="startModal" class="modal show">
-    <div class="modal-content show">
-      <h2>Instruções</h2>
-      <p>Assista ao vídeo até o final para liberar o quiz. Depois responda às perguntas uma a uma. Boa sorte!</p>
-      <button id="startBtn" class="option-button">Começar</button>
-    </div>
-  </div>
-
-  <header>
+  <header class="hero">
     <h1>Letramento Digital e Libras</h1>
+    <p>Um mundo de inclusão e tecnologia</p>
+    <a href="#video" class="btn">Assista ao Vídeo Interativo</a>
   </header>
 
   <main>
-    <video id="videoPlayer" controls>
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-      Seu navegador não suporta vídeo HTML5.
-    </video>
+    <section id="video" class="video-section">
+      <h2>Vídeo Interativo</h2>
+      <div class="video-container">
+        <!--><iframe src="https://edpuzzle.com/embed/media/64c803bf3b08a7411e88e095" title="Vídeo Interativo" frameborder="0" allowfullscreen></iframe><!-->
+        <iframe src="https://militarycollegetiradentes.h5p.com/content/1292600887092205247/embed" aria-label="O que é letramento digital? - Interactive Video" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://militarycollegetiradentes.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>📱 Letramento Digital</h3>
+        <p>Aprender a usar a tecnologia de forma consciente e segura é essencial para o mundo moderno.</p>
+      </div>
+      <div class="card">
+        <h3>🤟 Letramento em Libras</h3>
+        <p>A Libras conecta comunidades surdas e promove inclusão em todos os espaços.</p>
+      </div>
+      <div class="card">
+        <h3>🎯 Curiosidade</h3>
+        <p>Sabia que Libras tem gramática própria e expressa emoções como qualquer outra língua?</p>
+      </div>
+    </section>
+
+    <section class="participate">
+      <h2>Participe</h2>
+      <p>Deixe sua opinião ou sugestão:</p>
+      <form>
+        <input type="text" placeholder="Seu nome" required>
+        <textarea placeholder="Sua mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
   </main>
 
-  <!-- Modal do Quiz -->
-  <div id="quizModal" class="modal hidden">
-    <div class="modal-content">
-      <h2 id="quizQuestion"></h2>
-      <div id="quizOptions"></div>
-      <button id="nextBtn" class="option-button hidden">Próxima</button>
-      <button id="resultBtn" class="option-button hidden">Ver Resultado</button>
-      <div id="quizResult" class="hidden"></div>
-    </div>
-  </div>
+  <footer>
+    <p>&copy; 2025 – Feito com 💙 e inclusão</p>
+    <p>Equipe 3 (Colégio Militar Tiradentes III)</p>
+  </footer>
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
