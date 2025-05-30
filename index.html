@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Letramento Digital e Libras</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Modal de Instruções -->
+  <div id="startModal" class="modal show">
+    <div class="modal-content show">
+      <h2>Instruções</h2>
+      <p>Assista ao vídeo até o final para liberar o quiz. Depois responda às perguntas uma a uma. Boa sorte!</p>
+      <button id="startBtn" class="option-button">Começar</button>
+    </div>
+  </div>
+
+  <header>
+    <h1>Letramento Digital e Libras</h1>
+  </header>
+
+  <main>
+    <video id="videoPlayer" controls>
+      <source src="video.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo HTML5.
+    </video>
+  </main>
+
+  <!-- Modal do Quiz -->
+  <div id="quizModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="quizQuestion"></h2>
+      <div id="quizOptions"></div>
+      <button id="nextBtn" class="option-button hidden">Próxima</button>
+      <button id="resultBtn" class="option-button hidden">Ver Resultado</button>
+      <div id="quizResult" class="hidden"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
