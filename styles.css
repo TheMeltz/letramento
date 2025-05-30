@@ -10,10 +10,26 @@
   --shadow: 0 0 15px rgba(0, 122, 204, 0.6);
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(0,122,204,0.4) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: fadeGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes fadeGlow {
+  from { opacity: 0.3; }
+  to { opacity: 0.6; }
+}
+
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-  background: var(--bg-dark);
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
   color: var(--text-light);
   display: flex;
   flex-direction: column;
@@ -47,7 +63,17 @@ video {
   border: 4px solid var(--primary);
   border-radius: 10px;
   box-shadow: var(--shadow);
+  animation: pulseBorder 2.5s infinite alternate;
   outline: none;
+}
+
+@keyframes pulseBorder {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 122, 204, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(0, 122, 204, 0.7);
+  }
 }
 
 .modal {
@@ -84,9 +110,11 @@ video {
   transform: translateY(-20px);
   opacity: 0;
   transition: all 0.35s ease;
+  transform: scale(0.9);
 }
 
 .modal-content.show {
+  transform: scale(1.0);
   opacity: 1;
   transform: translateY(0);
 }
@@ -95,6 +123,13 @@ h2 {
   color: var(--accent);
   margin-bottom: 1.2rem;
 }
+
+header h1, h2 {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
 
 .option-button {
   display: block;
@@ -108,7 +143,8 @@ h2 {
   font-size: 1.1rem;
   cursor: pointer;
   box-shadow: 0 0 12px rgba(0, 122, 204, 0.5);
-  transition: background 0.3s, transform 0.2s;
+  
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .option-button:hover {
