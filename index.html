@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Letramento Digital e Libras</title>
+  <meta name="description" content="Aprenda sobre letramento digital e Libras.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://letramento-digital.netlify.app/">
+  <meta property="og:title" content="Letramento Digital e Libras">
+  <meta property="og:description" content="Descubra como o letramento digital e Libras promovem inclusão e cidadania!">
+
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
@@ -12,17 +18,29 @@
   <header class="hero">
     <h1>Letramento Digital e Libras</h1>
     <p>Um mundo de inclusão e tecnologia</p>
-    <a href="#video" class="btn">Assista ao Vídeo Interativo</a>
+    <p>Termine de assistir o vídeo para responder um rápido quiz!</p>
+    <a href="#video" class="btn">Assista ao Vídeo Interativo e Responda o Quiz</a>
   </header>
 
   <main>
     <section id="video" class="video-section">
       <h2>Vídeo Interativo</h2>
       <div class="video-container">
-        <!--><iframe src="https://edpuzzle.com/embed/media/64c803bf3b08a7411e88e095" title="Vídeo Interativo" frameborder="0" allowfullscreen></iframe><!-->
-        <iframe src="https://militarycollegetiradentes.h5p.com/content/1292600887092205247/embed" aria-label="O que é letramento digital? - Interactive Video" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://militarycollegetiradentes.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+       
+        <video id="showroom-video" width="100%" controls>
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          Seu navegador não suporta vídeos em HTML5.
+        </video>
       </div>
     </section>
+
+    <div id="quizModal" class="modal">
+      <div class="modal-content">
+        <h2 id="quizTitle"></h2>
+        <p id="quizQuestion"></p>
+        <div id="quizOptions"></div>
+      </div>
+    </div>
 
     <section class="cards">
       <div class="card">
@@ -38,22 +56,15 @@
         <p>Sabia que Libras tem gramática própria e expressa emoções como qualquer outra língua?</p>
       </div>
     </section>
-
-    <section class="participate">
-      <h2>Participe</h2>
-      <p>Deixe sua opinião ou sugestão:</p>
-      <form>
-        <input type="text" placeholder="Seu nome" required>
-        <textarea placeholder="Sua mensagem" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
   </main>
 
   <footer>
     <p>&copy; 2025 – Feito com 💙 e inclusão</p>
-    <p>Equipe 3 (Colégio Militar Tiradentes III)</p>
+    <p>Equipe Alpha (Colégio Militar Tiradentes III)</p>
   </footer>
 
+  <audio id="erroSound" src="erro.wav"></audio>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js" type="text/javascript"></script>
 </body>
 </html>
