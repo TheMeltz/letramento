@@ -52,9 +52,11 @@ startBtn.addEventListener('click', () => {
 });
 
 video.addEventListener('ended', () => {
-  quizModal.classList.remove('hidden');
-  quizModal.querySelector('.modal-content').classList.add('show');
-  loadQuestion();
+  setTimeout(() => {
+    quizModal.classList.remove('hidden');
+    quizModal.querySelector('.modal-content').classList.add('show');
+    loadQuestion();
+  }, 100);
 });
 
 function loadQuestion() {
@@ -81,6 +83,7 @@ function clearState() {
 function selectOption(selectedIndex) {
   let q = quizData[currentQuestion];
   const buttons = quizOptions.querySelectorAll('button');
+
   buttons.forEach((btn, i) => {
     btn.disabled = true;
     if (i === q.correct) {
@@ -113,7 +116,7 @@ resultBtn.addEventListener('click', () => {
   resultBtn.classList.add('hidden');
   quizResult.classList.remove('hidden');
   quizResult.textContent = `Você acertou ${score} de ${quizData.length} perguntas!`;
-  showConfetti();
+  launchConfetti();
 
   setTimeout(() => {
     location.reload();
@@ -121,48 +124,26 @@ resultBtn.addEventListener('click', () => {
 });
 
 
-function showConfetti() {
-  const confettiCount = 100;
-  const colors = ['#26a69a', '#007acc', '#ff6f61', '#ffd54f', '#ab47bc'];
-  const confettiContainer = document.createElement('div');
-  confettiContainer.style.position = 'fixed';
-  confettiContainer.style.top = 0;
-  confettiContainer.style.left = 0;
-  confettiContainer.style.width = '100%';
-  confettiContainer.style.height = '100%';
-  confettiContainer.style.pointerEvents = 'none';
-  confettiContainer.style.overflow = 'visible';
-  confettiContainer.style.zIndex = 1500;
-  document.body.appendChild(confettiContainer);
+function launchConfetti() {
+  const duration = 3 * 1000;
+  const end = Date.now() + duration;
 
-  for (let i = 0; i < confettiCount; i++) {
-    const confetto = document.createElement('div');
-    confetto.style.position = 'absolute';
-    confetto.style.width = '8px';
-    confetto.style.height = '8px';
-    confetto.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    confetto.style.left = Math.random() * window.innerWidth + 'px';
-    confetto.style.top = '-10px';
-    confetto.style.opacity = Math.random() + 0.5;
-    confetto.style.borderRadius = '50%';
-    confetto.style.transform = `rotate(${Math.random() * 360}deg)`;
-    confettiContainer.appendChild(confetto);
-
-    // Animação simples caindo com rotação
-    confetto.animate([
-      { transform: `translateY(0) rotate(0deg)` },
-      { transform: `translateY(${window.innerHeight + 20}px) rotate(360deg)` }
-    ], {
-      duration: 3000 + Math.random() * 2000,
-      iterations: 1,
-      easing: 'ease-out',
-      delay: Math.random() * 500
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
     });
 
-    // Remove o confetto após a animação
-    setTimeout(() => confetto.remove(), 5000);
-  }
-
-  // Remove o container após 6 segundos
-  setTimeout(() => confettiContainer.remove(), 6000);
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
 }
